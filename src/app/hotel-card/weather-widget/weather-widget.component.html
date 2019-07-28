@@ -1,0 +1,16 @@
+<div class="temperatur">
+  <ng-container *ngIf="hotel; else loadingBlock">
+    <h5>{{hotel?.weather.title}}</h5>
+    <span class="w-line"> </span>
+    <span class="cloud"> </span>
+    <h2>{{hotel?.weather.temperature}}
+      <sup class="degree">°</sup>
+    </h2>
+    <h6>Water {{hotel?.weather.water}}
+      <sup class="degree">°</sup>
+    </h6>
+  </ng-container>
+  <ng-template #loadingBlock>
+    loading...
+  </ng-template>
+</div>

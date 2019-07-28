@@ -1,0 +1,47 @@
+<h1>Hot Weather Widget</h1>
+<div class="element">
+  <div class="element-left">
+    <div class="element-bg-img">
+      <img src="assets/images/1.jpg" alt="" class="img-responsive"> </div>
+    <div class="element-left-bottom">
+      <div class="ele-strip">
+        <app-hotel-type
+          *ngFor="let type of (hotelTypes | enumToArray)"
+          [activeType]="activeHotelType"
+          [type]="type"
+          (typeChange)="onTypeChange(type)">
+        </app-hotel-type>
+      </div>
+      <div class="village">
+        <h3>Righteous indignation & like</h3>
+        <span class="line"> </span>
+        <div class="activity_box">
+          <div class="scrollbar" id="style-2">
+            <ng-container *ngIf="hotels$ | async as hotels; else loadingBlock">
+              <app-hotel-item
+                *ngFor="let hotel of (hotels | hotelFilter: hotelTypes[activeHotelType]); index as i"
+                [hotel]="hotel"
+                [selectedHotel]="selectedHotel"
+                (hotelSelected)="onHotelSelected(hotel)"
+                [index]="i">
+              </app-hotel-item>
+            </ng-container>
+            <ng-template #loadingBlock>
+              loading...
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="element-right ">
+    <app-weather-widget [hotel]="hotel"></app-weather-widget>
+    <app-hotel-preview [hotel]="hotel"></app-hotel-preview>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="copy-right ">
+  <p>© 2015 Hot Weather Widget. All rights reserved | Design by
+    <a href="http://w3layouts.com/ " target="_blank "> W3layouts </a>
+  </p>
+</div>

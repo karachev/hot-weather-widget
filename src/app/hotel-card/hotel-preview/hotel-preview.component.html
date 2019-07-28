@@ -1,0 +1,24 @@
+<div class="teddy-bear">
+  <div class="teddy-text">
+    <ng-container *ngIf="hotel; else loadingBlock">
+      <h4>{{hotel?.socialInfo.title}}</h4>
+      <span class="w-line"> </span>
+      <img src="assets/images/b1.jpg" alt="" class="img-responsive">
+    </ng-container>
+    <ng-template #loadingBlock>
+      loading...
+    </ng-template>
+  </div>
+  <div class="teddy-follow">
+    <ul>
+      <li class="folw-h">
+        <h3>{{hotel?.socialInfo.followers}}</h3>
+        <p>Followers</p>
+      </li>
+      <li>
+        <h3>{{hotel?.socialInfo.following}}</h3>
+        <p>Following</p>
+      </li>
+    </ul>
+  </div>
+</div>
